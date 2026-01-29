@@ -11,7 +11,8 @@
 
     <h3>Top 12 JavaScript Concepts to Know Before Learning React</h3>
     <!-- <h3>Date <h3 id="date"></h3> -->
-    </h3>
+    <!-- <button onclick="clickEvent('This is Event Handler Closure')">Btn</button> -->
+
     <script>
 
 
@@ -730,10 +731,145 @@
 
 
 
-        // 9. Closure in JavaScript====================================================================
+        // 9. Closure in JavaScript=======================================================================
+
+        // Closure is the feature of JavaScript that allows an inner function to have access to its current 
+        // scope as well as its lexical parent scope. It is a very fundamental, basic yet important concept
+        //  of JavaScript. The closure has the property of encapsulation, code organization, and memorization
+        //  of its lexical parent scope. In react.js privacy can be achieved using closures, by creating 
+        // encapsulated logic inside components.
+        // Key ideas:
+        // function inside another function
+        // inner function uses outer function’s variables
+        // outer function is already “done”
+        // variables are still remembered
+
+        // This won't work properly
+        // console.log("Without Closure (no state preserved)")
+
+        // function outer() {
+        //     let num = 0
+
+        //     function inner() {
+        //         num++;
+        //         console.log(num)
+        //     }
+        //     inner()
+        // }
+        // outer() // Every function call creates fresh variables
+        // outer()
+
+
+        // console.log("With Closure (state preserved)")
+        // function outer2() {
+        //     let count = 0
+
+        //     function inner2() {
+        //         count++
+        //         console.log(count)
+        //     }
+        //     return inner2 // "Give this inner function to whoever called outer()"
+        // }
+        // const n = outer2() // n stores a function, and that function remembers count
+        // n()
+        // n()
+        // n()
+        // n()
+
+        // What happens internally:
+        // 1. outer2() starts
+        // 2. count = 0
+        // 3. inner function is created
+        // 4. inner is returned
+        // 5. outer2() ends
+        // 6. count is NOT destroyed => because inner still uses it
+        //  This is closure.
+
+
+        // Real Example #1: (With Variable)------------------
+
+        // function createCounter(){
+        //     let count = 0 
+        //     return function(){
+        //         count ++
+        //         return count
+        //     }
+        // }
+
+        // const c = createCounter()
+        // console.log(c())
+
+
+        // Real Example #2: (Event Handlers) ------------------
+
+        // function clickEvent(message){
+        //     let num = 0
+        //     document.addEventListener("click", ()=>{ // Hey browser, here is a function. Please keep it and call it later when a click happens.
+        //         num ++
+        //         console.log(message, num, "Time")
+        //     })  
+        // }
+        // // num increases because the event handler function is stored by the browser, so it keeps num 
+        // // alive via closure even without return.
+
+        // clickEvent("This is Event Handler Closure")
+
+
+        // Real Example #3: (setTimeout) ------------------
+        // function timeout() {
+        //     let message = "Here is setTime Out With Closure"
+        //     let message2 = "Here is another with setTime Out"
+
+        //     setTimeout(() => {
+        //         console.log(message)
+        //     }, 2000)
+        //     setTimeout(() => {
+        //         console.log(message2)
+        //     }, 4000)
+        // }
+
+        // timeout()
+
+
+        // Real-World Example (Combine Them) ------------------
+
+        // function outer(message) {
+        //     console.log("Outer Function has been Called")
+        //     // console.log(message)
+        //     document.addEventListener("click", () => {
+        //         setTimeout(() => {
+        //             let h3 = document.createElement("h3").textContent = message
+        //             document.body.append(h3)
+
+        //             console.log(message)
+        //         }, 2000)
+        //     })
+
+
+        // }
+
+        // outer("Thi is 1")
+        // outer("Thi is 2")
+        // outer("Thi is 3")
+
+        // ==========================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 9. Async/Await in JavaScript======================================================================
 
         // Coming Soon
-
+         
         // ==========================================================================================================
 
 
