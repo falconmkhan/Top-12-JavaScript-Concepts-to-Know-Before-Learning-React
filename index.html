@@ -868,8 +868,52 @@
 
         // 9. Async/Await in JavaScript======================================================================
 
-        // Coming Soon
-         
+        // JavaScript has asynchronous functionalities to handle operations that will take time to complete
+        //  such as network requests and file operations. After callback and promises, async and await were 
+        // introduced, and with this asynchronous code became more readable and simple to handle.
+
+        // async: what does it do?
+        // Rule : A function marked async ALWAYS returns a Promise
+        // Example: return n becomes Promise.resolve(n)
+        async function name(n) {
+            return n;
+        }
+        name()
+            .then(val => console.log("faiz"))
+            .then(val => console.log("mustajab"))
+            .catch(err => console.log("There is no name")) // if there is an error shows this else above cod
+
+
+        // await: what does it do?
+        // Rule:  await pauses the function until the Promise is resolved.
+        // But: it does not block JS , it pauses only that async function
+
+        function getNumber() {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(5);
+                }, 1000);
+            });
+        }
+
+        getNumber().then(num => {
+            console.log(num);
+        });
+
+        async function showNumber() {
+            try {
+                await (console.log(hello()))
+                const num = await getNumber();
+                console.log(num);
+            }
+            catch (e) {
+                console.log("Error in this code more code is continue ")
+            }
+        }
+
+        showNumber();
+
+
         // ==========================================================================================================
 
 
